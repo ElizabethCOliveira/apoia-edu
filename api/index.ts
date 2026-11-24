@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   const generation = req.method === 'POST' &&
     ['/api/demo/activities/generate', '/api/demo/documents/generate'].includes(req.path);
   if (!generation || req.body?.useAi !== true) return next();
-  if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === 'MY_GEMINI_API_KEY') {
+  if (!(process.env.GEMINI_API_KEY || process.env.gemini) || (process.env.GEMINI_API_KEY || process.env.gemini) === 'MY_GEMINI_API_KEY') {
     res.status(503).json({ error: 'A chave Gemini ainda não foi configurada na Vercel. Você pode desmarcar a opção de IA para explorar os exemplos.' });
     return;
   }
