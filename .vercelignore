@@ -1,0 +1,6 @@
+storage
+.env
+.env.*
+!.env.example
+node_modules
+.git

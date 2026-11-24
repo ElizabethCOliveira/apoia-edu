@@ -1,0 +1,6 @@
+{
+  "name": "ApoIA - Ferramentas de IA para a Educação Inclusiva",
+  "description": "Plataforma da LumiNext Tech para gestão de estudantes, Estudo de Caso, PAEE, PEI, atividades adaptadas, planos de aula e acompanhamento pedagógico.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
