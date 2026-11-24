@@ -37,9 +37,13 @@ Acesse: https://apoia-edu.vercel.app
 
 Na publicação Vercel, clique em **Experimentar demonstração** e selecione **Perfil Escola** ou **Perfil Professor(a)**. Não são necessárias credenciais.
 
-**A publicação é exclusiva para avaliação, com dados fictícios e temporários.** Contas reais, rotas administrativas e chamadas externas de IA estão desativadas. As alterações ficam na memória da instância do servidor e podem ser reiniciadas quando ela reinicia, muda de instância, expira a sessão ou atinge seu limite. Não há promessa de persistência ou de sincronização entre instâncias nesta versão.
+**A publicação é exclusiva para avaliação, com dados fictícios e temporários.** Contas reais e rotas administrativas estão desativadas. A geração com Gemini está habilitada no servidor quando `GEMINI_API_KEY` está configurada. As alterações ficam na memória da instância do servidor e podem ser reiniciadas quando ela reinicia, muda de instância, expira a sessão ou atinge seu limite. Não há promessa de persistência ou de sincronização entre instâncias nesta versão.
 
-A geração demonstrativa usa exemplos e processamento estruturado local. A integração Gemini existe no código, mas **não está ativa na demonstração publicada**. Não confundir exemplos locais com resultados de uma chamada de IA ao vivo.
+A opção **Gerar atividade personalizada com IA** chama o Gemini pelo servidor. Sem essa opção, o sistema usa processamento estruturado local. A chave nunca é enviada ao navegador. Use somente dados fictícios, inclusive nos campos de texto e anexos. Erros de chave ou cota são apresentados; não são disfarçados como geração com IA.
+
+Há limites por instância: até 6 solicitações com IA por endereço IP/hora, 30 no total/hora e 2 simultâneas. Reinícios e múltiplas instâncias podem renovar ou multiplicar esses limites; eles não representam um teto de cobrança. Uma solicitação pode envolver novas tentativas e geração de imagens. Configure também as cotas do projeto Gemini.
+
+Para ativar: em Vercel → projeto apoia-edu → Settings → Environment Variables, adicione `GEMINI_API_KEY` como **Sensitive**, para **Production**, e faça um novo deploy. Não use prefixo `VITE_` na chave. `GEMINI_MODEL` e `GEMINI_FALLBACK_MODEL` são opcionais; os padrões são `gemini-4-hydrogen` e `gemini-3.1-flash-lite`.
 
 ### Roteiro sugerido de 3 minutos
 

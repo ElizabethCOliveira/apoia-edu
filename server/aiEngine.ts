@@ -84,8 +84,8 @@ function mapGeminiError(err: any): GeminiServiceError {
 
 async function callGeminiWithRetry<T>(
   operation: (model: string) => Promise<T>,
-  primaryModel = 'gemini-4-hydrogen',
-  fallbackModel = 'gemini-3.1-flash-lite'
+  primaryModel = process.env.GEMINI_MODEL || 'gemini-4-hydrogen',
+  fallbackModel = process.env.GEMINI_FALLBACK_MODEL || 'gemini-3.1-flash-lite'
 ): Promise<T> {
   const modelsToTry = fallbackModel && fallbackModel !== primaryModel ? [primaryModel, fallbackModel] : [primaryModel];
   let lastError: any;

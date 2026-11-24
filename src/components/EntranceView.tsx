@@ -176,7 +176,7 @@ export const EntranceView: React.FC<EntranceViewProps> = ({
 
       <main id="topo" className="flex-1">
         {import.meta.env.VITE_PUBLIC_DEMO === 'true' && <div className="bg-amber-50 border-b border-amber-200 px-6 py-4 text-center text-sm text-amber-950">
-          <strong>Demonstração para avaliação — somente dados fictícios.</strong> Use “Experimentar demonstração”. Alterações são temporárias e podem ser reiniciadas. Contas reais e IA externa estão desativadas.
+          <strong>Demonstração para avaliação — somente dados fictícios.</strong> Use “Experimentar demonstração”. Alterações são temporárias e podem ser reiniciadas. Contas reais estão desativadas. A geração com Gemini usa o servidor e está sujeita à configuração da chave e à cota disponível. Use somente dados fictícios.
         </div>}
         {/* Hero Split */}
         <section id="acesso" className="max-w-7xl mx-auto px-6 lg:px-10 py-10 lg:py-14">
