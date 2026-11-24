@@ -45,16 +45,6 @@ Há limites por instância: até 6 solicitações com IA por endereço IP/hora, 
 
 Para ativar: em Vercel → projeto apoia-edu → Settings → Environment Variables, adicione `GEMINI_API_KEY` como **Sensitive**, para **Production**, e faça um novo deploy. Não use prefixo `VITE_` na chave. `GEMINI_MODEL` e `GEMINI_FALLBACK_MODEL` são opcionais; os padrões são `gemini-4-hydrogen` e `gemini-3.1-flash-lite`.
 
-### Roteiro sugerido de 3 minutos
-
-1. **0:00–0:30 — Problema e perfil:** entre como Escola, abra um estudante fictício e mostre potencialidades, interesses e barreiras.
-2. **0:30–1:15 — Planejamento integrado:** consulte Estudo de Caso, PAEE e PEI disponíveis; mostre a relação de uma atividade com o objetivo pedagógico.
-3. **1:15–2:00 — Aplicação e acompanhamento:** explore atividades, exporte um DOCX e consulte os registros de participação e apoio.
-4. **2:00–2:40 — Continuidade escolar:** na gestão da escola, consulte a transferência recebida com código **TRF-DEMO2026**; confirme a inclusão. A estudante fictícia Beatriz passa a constar com o histórico encaminhado.
-5. **2:40–3:00 — Colaboração:** alterne para Professor(a), mostrando que a visualização depende dos vínculos atribuídos.
-
-Os controles podem estar distribuídos entre as abas do estudante e a gestão da escola. Para recomeçar, encerre a demonstração e abra uma nova sessão.
-
 ### Exemplo pedagógico
 
 **Situação:** trabalhar Ciências com uma estudante em alfabetização inicial, interessada em animais e que se beneficia de apoio visual.
@@ -65,79 +55,6 @@ Os controles podem estar distribuídos entre as abas do estudante e a gestão da
 - Registre participação, alcance do objetivo, nível de apoio e próximo passo.
 
 **Resultado esperado:** visualizar o ciclo completo entre perfil, atividade e registro de aplicação. Os exemplos devem ser revisados antes de qualquer uso pedagógico real.
-
-## Como executar localmente
-
-### Pré-requisitos
-
-- **Node.js 24.x** e npm.
-- Git, para clonar este repositório público.
-- Para a versão local completa: diretório gravável para SQLite, uploads e documentos gerados.
-- Chave Gemini apenas se desejar testar chamadas externas de IA. Nunca coloque a chave no frontend ou no GitHub.
-
-```bash
-git clone https://github.com/ElizabethCOliveira/apoia-edu.git
-cd apoia-edu
-npm ci
-```
-
-Copie `.env.example` para `.env`:
-
-```bash
-# Linux/macOS
-cp .env.example .env
-```
-
-```powershell
-# Windows PowerShell
-Copy-Item .env.example .env
-```
-
-As dependências nativas de SQLite podem exigir ferramentas de compilação se não houver binário pré-compilado para seu sistema.
-
-### Iniciar em desenvolvimento
-
-```bash
-npm run dev
-```
-
-Abra **http://localhost:3000** e clique em **Experimentar demonstração**. A demonstração não exige configurar Gemini nem criar administradora.
-
-### Compilar e iniciar em produção local
-
-```bash
-npm run lint
-npm run build
-npm start
-```
-
-`npm run preview` serve somente o frontend; ele não substitui o servidor completo e não oferece as rotas `/api`.
-
-### Configurações opcionais da versão local
-
-| Variável | Finalidade |
-| --- | --- |
-| `GEMINI_API_KEY` | Habilita a integração externa quando o fluxo e as permissões também a autorizam |
-| `APP_URL` | Endereço da aplicação para links internos |
-| `PORT` | Porta do servidor; padrão 3000 |
-| `STORAGE_ROOT` | Diretório de SQLite e arquivos; padrão `storage` |
-| `LUMINEXT_ADMIN_EMAIL` | E-mail da primeira administradora |
-| `LUMINEXT_ADMIN_PASSWORD` | Senha inicial forte, configurada somente no ambiente do servidor |
-| `LUMINEXT_ADMIN_NAME` | Nome da administradora |
-| `VITE_PUBLIC_DEMO` | `true` para mostrar o aviso de demonstração e desativar o envio do formulário de login/cadastro na interface |
-
-Para testar contas locais, configure as três variáveis `LUMINEXT_ADMIN_*` e execute `npm run admin:init`. Não use credenciais de exemplo em produção. A criação de usuários e liberação de acesso ficam na administração. A recuperação automática de senha por e-mail ainda precisa ser implementada; o retorno de códigos de teste fica bloqueado em produção.
-
-## Publicação na Vercel
-
-- Frontend React/Vite em `dist`.
-- Função Express em `api/index.ts`, encaminhada pelas regras de `vercel.json`.
-- A função da publicação permite apenas demonstração e modelos de exemplo; as rotas de contas reais são bloqueadas no servidor, independentemente da interface.
-- Arquivos auxiliares usam `/tmp` e são temporários. O banco e os documentos enviados no ZIP original **não integram o repositório nem o deploy**.
-- O build deve receber `VITE_PUBLIC_DEMO=true`.
-- Demonstração pública: o acesso da banca não exige login na Vercel.
-
-**Para uso permanente em escolas:** migrar ou hospedar o banco em infraestrutura persistente, configurar armazenamento privado de arquivos, backups, recuperação de conta, limites de uso e validação de segurança e acessibilidade. Não utilizar esta demonstração como arquivo oficial de estudantes.
 
 ## Tecnologias e organização
 
@@ -160,4 +77,4 @@ Protótipo funcional em validação. Foram implementados os fluxos descritos aci
 
 **Impacto esperado:** reduzir tarefas repetitivas, facilitar materiais acessíveis e manter a continuidade do planejamento e acompanhamento. Não foram atribuídos percentuais de economia ou resultados de aprendizagem ainda não medidos nesta plataforma.
 
-**Autoria:** Elizabeth da Conceição Oliveira · LumiNext Tech.
+**Autoria:** Elizabeth da Conceição Oliveira, Nycollas Reydan Alves Peixoto, Jessica Lima de Carvalho Pastor
