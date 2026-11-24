@@ -33,7 +33,7 @@ A preservação de formatação depende do modelo importado; não se promete com
 
 ## Demonstração para a banca
 
-Acesse: https://apoia-edu-bethfurg-5735.vercel.app
+Acesse: https://apoia-edu.vercel.app
 
 Na publicação Vercel, clique em **Experimentar demonstração** e selecione **Perfil Escola** ou **Perfil Professor(a)**. Não são necessárias credenciais.
 
@@ -131,7 +131,7 @@ Para testar contas locais, configure as três variáveis `LUMINEXT_ADMIN_*` e ex
 - A função da publicação permite apenas demonstração e modelos de exemplo; as rotas de contas reais são bloqueadas no servidor, independentemente da interface.
 - Arquivos auxiliares usam `/tmp` e são temporários. O banco e os documentos enviados no ZIP original **não integram o repositório nem o deploy**.
 - O build deve receber `VITE_PUBLIC_DEMO=true`.
-- O acesso externo pode exigir login da Vercel enquanto a proteção do projeto estiver ativa.
+- Demonstração pública: o acesso da banca não exige login na Vercel.
 
 **Para uso permanente em escolas:** migrar ou hospedar o banco em infraestrutura persistente, configurar armazenamento privado de arquivos, backups, recuperação de conta, limites de uso e validação de segurança e acessibilidade. Não utilizar esta demonstração como arquivo oficial de estudantes.
 
