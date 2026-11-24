@@ -24,7 +24,7 @@ export class GeminiServiceError extends Error {
 }
 
 export function isGeminiApiConfigured(): boolean {
-  const key = process.env.GEMINI_API_KEY;
+  const key = (process.env.GEMINI_API_KEY || process.env.gemini);
   return Boolean(key && key !== 'MY_GEMINI_API_KEY' && key.trim().length >= 10);
 }
 
@@ -33,7 +33,7 @@ function getGeminiClient(): GoogleGenAI | null {
     return null;
   }
   return new GoogleGenAI({
-    apiKey: process.env.GEMINI_API_KEY,
+    apiKey: (process.env.GEMINI_API_KEY || process.env.gemini),
     httpOptions: {
       timeout: 60000,
       headers: {
