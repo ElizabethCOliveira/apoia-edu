@@ -6,9 +6,31 @@ Protótipo desenvolvido por Elizabeth da Conceição Oliveira, Nycollas Reydan A
 
 ## O problema
 
-Informações sobre o estudante frequentemente ficam distribuídas entre arquivos, formulários e registros de diferentes professores. Elaborar Estudo de Caso, PAEE, PEI e atividades em ferramentas separadas exige repetir informações e dificulta relacionar o planejamento àquilo que foi aplicado em sala.
+A inclusão escolar exige que os professores elaborem atividades acessíveis, planejamentos individualizados, avaliações e documentos pedagógicos, como o Estudo de Caso, o Plano Educacional Individualizado (PEI) e o Plano de Atendimento Educacional Especializado (PAEE).
 
-Quando o estudante muda de escola, a falta de continuidade desse histórico pode levar a novas entrevistas e reconstrução de documentos. O ApoIA busca reduzir esse retrabalho e preservar o contexto pedagógico para a equipe que dará continuidade ao atendimento.
+Entretanto, esses processos demandam tempo, conhecimento especializado e organização de informações que, muitas vezes, permanecem dispersas em documentos impressos, planilhas, pastas digitais e diferentes sistemas.
+
+Imagine um professor que atua em dez turmas e possui três estudantes da Educação Especial em cada uma delas. São 30 estudantes com diferentes potencialidades, interesses, barreiras de aprendizagem e necessidades de apoio, que podem demandar estratégias e atividades personalizadas.
+
+Além da sobrecarga docente, existem outros desafios:
+
+Fragmentação das informações: documentos, atividades, avaliações e registros pedagógicos armazenados em diferentes locais.
+
+Desconexão entre planejamento e prática: objetivos estabelecidos no PEI e apoios previstos no PAEE nem sempre estão diretamente relacionados às atividades realizadas em sala de aula.
+
+Dificuldade de personalização: atividades elaboradas com base apenas no diagnóstico, sem considerar as características individuais do estudante.
+
+Limitações no acompanhamento da aprendizagem: ausência de registros estruturados sobre participação, alcance dos objetivos, recursos utilizados e níveis de apoio.
+
+Retrabalho documental: preenchimento manual e repetitivo de informações em diferentes documentos pedagógicos.
+
+Descontinuidade entre escolas: quando um estudante muda de instituição, seu histórico pedagógico nem sempre acompanha a transferência, levando a nova equipe a repetir entrevistas, observações, avaliações e processos de elaboração documental.
+
+Dificuldade de colaboração: ausência de um ambiente integrado que permita aos profissionais compartilhar informações e acompanhar o estudante, respeitando suas responsabilidades e permissões de acesso.
+
+Esses desafios comprometem o tempo disponível para o trabalho pedagógico, dificultam a continuidade das estratégias de ensino e podem prejudicar a qualidade da inclusão escolar.
+
+Portanto, o problema não está apenas na produção de materiais acessíveis, mas na ausência de uma gestão pedagógica integrada, capaz de conectar o planejamento, a prática em sala de aula, o acompanhamento da aprendizagem e a continuidade do histórico do estudante ao longo de sua trajetória escolar.
 
 ## A solução
 
