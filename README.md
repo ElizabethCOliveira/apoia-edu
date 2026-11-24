@@ -89,7 +89,8 @@ flowchart LR
 ### Decisões de projeto
 
 - **A chave da IA nunca vai para o navegador.** Toda chamada ao Gemini passa pelo servidor.
-- **A IA recebe um resumo anônimo do perfil** (`buildAnonymizedStudentBrief`): código ou iniciais do estudante, ano/série, potencialidades, interesses, barreiras e estratégias. Nunca o nome completo. ⚠️ [CONFIRMAR e citar onde fica no código: "o envio de dados reais à IA vem desligado por padrão até a escola autorizar".]
+- **A IA recebe um resumo anônimo do perfil** (`buildAnonymizedStudentBrief` em `server/aiEngine.ts`): código ou iniciais do estudante, ano/série, potencialidades, interesses, barreiras e estratégias. Nunca o nome completo.
+- **IA externa desligada por padrão para dados reais:** cada escola tem o campo `ai_external_enabled`, que nasce `0`. A geração com IA só acontece depois que a escola autoriza. Isso é coberto por teste em `tests/permissions.test.ts`.
 - **Permissões checadas no servidor** em cada rota e no download de anexos. Ao encerrar um vínculo, o acesso é bloqueado na hora.
 - **Demo pública isolada:** na Vercel (`api/index.ts`), só as rotas `/api/demo/*` ficam abertas. Contas reais ficam bloqueadas e a geração por IA tem limite por visitante e por hora.
 - **SQLite:** simples para o protótipo. Na Vercel o banco fica em `/tmp` e é **temporário**, o que é intencional para a demo. ⚠️ [PREENCHER: onde roda a versão das escolas e como é feito o backup, ou "em produção, a migração prevista é para PostgreSQL gerenciado".]
@@ -117,12 +118,29 @@ npm run dev               # http://localhost:3000
 Outros comandos:
 
 ```bash
+npm test         # testes automatizados (Vitest)
 npm run lint     # checagem de tipos (tsc --noEmit)
 npm run build    # build do frontend em dist/
 npm start        # servidor em modo produção
 ```
 
 > A pasta `storage/` guarda o banco e os anexos e **nunca é servida publicamente**: todo arquivo passa por rotas autorizadas da API.
+
+## Testes
+
+```bash
+npm test
+```
+
+Os testes rodam num banco SQLite temporário (nunca tocam em `storage/`) e cobrem o que não pode quebrar:
+
+| Arquivo | O que garante |
+| --- | --- |
+| `tests/permissions.test.ts` | Professora só acessa estudante com vínculo ativo; vínculo revogado ou saída da escola bloqueiam na hora; área individual é privada; IA externa nasce desligada |
+| `tests/public-demo.test.ts` | A demo pública bloqueia rotas reais (login, cadastro, admin, estudantes); cada visitante tem sessão isolada; a IA tem proteções de chave ausente e tamanho de entrada |
+| `tests/auth.test.ts` | Senhas com `scrypt` e salt único; contas pendentes, bloqueadas ou com contrato vencido não entram |
+
+O GitHub Actions roda checagem de tipos e testes a cada push (veja `.github/workflows/ci.yml`).
 
 ## Estrutura do código
 
@@ -148,7 +166,7 @@ Nenhum código anterior ao evento foi copiado para este repositório. O agente d
 
 ## Próximos passos
 
-- Testes automatizados de permissões e de preenchimento de modelos, com CI no GitHub Actions.
+- Testes do preenchimento de modelos DOCX/XLSX e da geração com IA (com respostas simuladas).
 - Rascunho da revisão bimestral do PEI a partir dos registros de aplicação.
 - Banco gerenciado com backup para escalar para redes municipais.
 - Auditoria de acessibilidade do próprio app (WCAG).
