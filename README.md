@@ -2,7 +2,7 @@
 
 **Do planejamento à atividade em sala: um histórico pedagógico que acompanha o estudante.**
 
-Protótipo da LumiNext Tech, desenvolvido por Elizabeth da Conceição Oliveira para apoiar professores e escolas no atendimento a estudantes da Educação Especial. Preparado para avaliação no Hack Brasil.
+Protótipo desenvolvido por Elizabeth da Conceição Oliveira, Nycollas Reydan Alves Peixoto e Jessica Lima de Carvalho Pastor, para apoiar professores e escolas no atendimento a estudantes da Educação Especial. Preparado para avaliação no Hack Brasil.
 
 ## O problema
 
