@@ -1,404 +1,166 @@
-# ApoIA.Edu — Ferramentas de IA para a Educação Inclusiva
+# ApoIA.Edu — IA para a Educação Inclusiva
 
-**Do planejamento à atividade em sala: um histórico pedagógico que acompanha o estudante.**
+**Do planejamento à atividade em sala: um histórico pedagógico que acompanha o estudante da Educação Especial.**
 
-Protótipo desenvolvido por Elizabeth da Conceição Oliveira, Nycollas Reydan Alves Peixoto e Jessica Lima de Carvalho Pastor, para apoiar professores e escolas no atendimento a estudantes da Educação Especial. Preparado para avaliação no Hack Brasil.
+O ApoIA.Edu ajuda professores e escolas a elaborar o Estudo de Caso, o PAEE e o PEI, gerar atividades acessíveis em A4 e registrar o que aconteceu em sala, tudo ligado ao perfil de cada estudante. A IA sugere; o educador revisa e decide.
+
+🔗 **Demo:** https://apoia-edu.vercel.app/ (sem cadastro, só dados fictícios)
+🎬 **Vídeo:** ⚠️ [PREENCHER: link do YouTube]
+🏁 **Hack Brasil 2026:** trilha *Acesso à educação* · time LumiNextTech
+
+---
+
+## ⚡ Teste em 2 minutos
+
+1. Abra a [demo](https://apoia-edu.vercel.app/) e clique em **Experimentar demonstração → Entrar como Perfil Professor(a)**.
+2. Escolha **Sofia R.** e veja o **perfil pedagógico**: potencialidades, interesses, comunicação e estratégias que funcionam, sem exigir laudo.
+3. Clique em **Gerar atividade a partir deste objetivo**, preencha um tema (ex.: *Contagem de 1 a 5 com animais*) e clique em **Gerar atividade / plano de aula**.
+4. Veja a folha A4 adaptada (CAIXA ALTA, poucos estímulos por página) e exporte em **DOCX** ou **JPEG**.
+5. Clique em **Registrar como foi** e confira a **linha do tempo** de evidências do estudante.
+
+> Quer explorar tudo (documentos da escola, transferência entre escolas, perfil Escola)? Veja o [guia completo da demonstração](docs/GUIA_DEMONSTRACAO.md) (15–20 min).
+
+---
 
 ## O problema
 
-A inclusão escolar exige que os professores elaborem atividades acessíveis, planejamentos individualizados, avaliações e documentos pedagógicos, como o Estudo de Caso, o Plano Educacional Individualizado (PEI) e o Plano de Atendimento Educacional Especializado (PAEE).
+A educação especial teve **2,5 milhões de matrículas em 2025, 82% a mais do que em 2021** (Censo Escolar 2025/Inep). A maioria desses estudantes está em classes comuns, e cada um precisa de documentos e atividades individualizados.
 
-Entretanto, esses processos demandam tempo, conhecimento especializado e organização de informações que, muitas vezes, permanecem dispersas em documentos impressos, planilhas, pastas digitais e diferentes sistemas.
+Imagine uma professora com dez turmas e três estudantes da Educação Especial em cada uma: são 30 estudantes com potencialidades, interesses e barreiras diferentes. Hoje ela enfrenta:
 
-Imagine um professor que atua em dez turmas e possui três estudantes da Educação Especial em cada uma delas. São 30 estudantes com diferentes potencialidades, interesses, barreiras de aprendizagem e necessidades de apoio, que podem demandar estratégias e atividades personalizadas.
-
-Além da sobrecarga docente, existem outros desafios:
-
-Fragmentação das informações: documentos, atividades, avaliações e registros pedagógicos armazenados em diferentes locais.
-
-Desconexão entre planejamento e prática: objetivos estabelecidos no PEI e apoios previstos no PAEE nem sempre estão diretamente relacionados às atividades realizadas em sala de aula.
-
-Dificuldade de personalização: atividades elaboradas com base apenas no diagnóstico, sem considerar as características individuais do estudante.
-
-Limitações no acompanhamento da aprendizagem: ausência de registros estruturados sobre participação, alcance dos objetivos, recursos utilizados e níveis de apoio.
-
-Retrabalho documental: preenchimento manual e repetitivo de informações em diferentes documentos pedagógicos.
-
-Descontinuidade entre escolas: quando um estudante muda de instituição, seu histórico pedagógico nem sempre acompanha a transferência, levando a nova equipe a repetir entrevistas, observações, avaliações e processos de elaboração documental.
-
-Dificuldade de colaboração: ausência de um ambiente integrado que permita aos profissionais compartilhar informações e acompanhar o estudante, respeitando suas responsabilidades e permissões de acesso.
-
-Esses desafios comprometem o tempo disponível para o trabalho pedagógico, dificultam a continuidade das estratégias de ensino e podem prejudicar a qualidade da inclusão escolar.
-
-Portanto, o problema não está apenas na produção de materiais acessíveis, mas na ausência de uma gestão pedagógica integrada, capaz de conectar o planejamento, a prática em sala de aula, o acompanhamento da aprendizagem e a continuidade do histórico do estudante ao longo de sua trajetória escolar.
+- **Fragmentação:** documentos, atividades e registros espalhados em papel, planilhas e pastas.
+- **Planejamento desconectado da prática:** os objetivos do PEI e os apoios do PAEE nem sempre chegam à atividade em sala.
+- **Personalização só pelo diagnóstico:** atividades pensadas pelo laudo, não pelo estudante.
+- **Retrabalho documental:** as mesmas informações copiadas em vários modelos.
+- **Descontinuidade:** quando o estudante muda de escola, o histórico pedagógico se perde e tudo recomeça.
 
 ## A solução
 
-Um ambiente que conecta **perfil do estudante → Estudo de Caso → PAEE → PEI → atividades e planos de aula → registros de aplicação → acompanhamento e revisão**.
+Um fluxo único, centrado no estudante:
 
-A escola organiza estudantes, professores e permissões. O professor consulta as informações às quais tem acesso, elabora materiais, revisa as sugestões e registra o que ocorreu na aplicação. A IA apoia o trabalho; a decisão pedagógica permanece com o educador.
+**Perfil → Estudo de Caso → PAEE → PEI → atividades e planos de aula → registros de aplicação → revisão**
 
-## Diferenciais presentes no código
-
-| Diferencial | Como aparece no projeto | Valor para a escola |
+| Diferencial | Como funciona no ApoIA | Valor para a escola |
 | --- | --- | --- |
-| Planejamento conectado à prática | Atividades podem referenciar o objetivo do PEI e os apoios do PAEE | Permite relacionar uma atividade ao planejamento individual |
-| Continuidade entre escolas | Fluxo de solicitação, código de transferência, aprovação ou recusa; transferência de documentos, atividades e registros | Evita reconstruir o histórico a cada mudança de escola |
-| Acompanhamento com evidências | Registros de participação, alcance do objetivo, nível de apoio, recurso utilizado e próximo passo | Permite analisar a aplicação e orientar o próximo planejamento |
-| Personalização além do diagnóstico | Perfil com potencialidades, interesses, comunicação, barreiras e estratégias que funcionam | Apoia decisões baseadas nas características do estudante |
-| Aproveitamento de modelos da escola | Importação e processamento de DOCX, XLSX e PDF; preenchimento de modelos editáveis nos fluxos compatíveis | Reduz a transcrição manual e favorece continuidade documental |
-| Revisão humana e histórico de versões | Minutas, identificação de fontes, pendências e estado de revisão | Mantém a equipe responsável pela validação do conteúdo |
-| Colaboração com permissões | Perfis Escola e Professor, vínculos com estudantes e revogação de acesso | Organiza a atuação de diferentes profissionais |
-| Demonstração sem cadastro | Cenários fictícios com documentos, atividades e uma transferência recebida | A banca pode explorar a ideia sem cadastrar dados reais |
+| Planejamento conectado à prática | A atividade usa o objetivo do PEI e os apoios do PAEE | O que foi planejado chega à sala de aula |
+| Personalização além do diagnóstico | Perfil com potencialidades, interesses, comunicação, barreiras e estratégias | Atividades pensadas para o estudante, não para o laudo |
+| Acompanhamento com evidências | Registro de participação, alcance do objetivo, nível de apoio e próximo passo | Revisões bimestrais baseadas no que aconteceu |
+| Modelos da própria escola | Importa DOCX, XLSX e PDF e preenche cópias dos modelos institucionais | Menos transcrição manual |
+| Continuidade entre escolas | Código de transferência com aprovação; documentos e registros seguem o estudante | O histórico não recomeça a cada mudança |
+| Revisão humana obrigatória | Minutas com fontes identificadas, pendências e versões | A equipe valida tudo o que a IA sugere |
+| Colaboração com permissões | Perfis Escola e Professor, vínculos e revogação imediata de acesso | Cada profissional vê só o que deve |
 
-A preservação de formatação depende do modelo importado; não se promete compatibilidade perfeita com qualquer documento. O histórico permanente depende da infraestrutura de armazenamento e de backups, não apenas da interface.
+## 🏫 De onde viemos: a demanda já é validada
 
-## Demonstração para a banca
+O ApoIA.Edu não começou do zero. A primeira versão do APOIA é um **agente de IA configurado no Microsoft Copilot** ([documentação](https://github.com/ElizabethCOliveira/ApoIA)), que já é usado por professoras para adaptar atividades.
 
-# Guia de Demonstração — ApoIA.Edu
-## Ferramentas de Inteligência Artificial para a Educação Inclusiva
+⚠️ [PREENCHER com dados reais e autorizados. Apenas números agregados, nenhum dado de estudante.]
 
-Seja bem-vindo à demonstração do ApoIA.Edu!
+- Agente em uso desde ⚠️ [mês/ano] em ⚠️ [N] escolas de ⚠️ [cidade/UF].
+- ⚠️ [N] professoras usando · ⚠️ [N] atividades adaptadas geradas.
+- Depoimento: "⚠️ [frase da professora]" — ⚠️ [nome, função, escola, com autorização].
 
-Mais do que uma ferramenta de geração de atividades e documentos com inteligência artificial, o ApoIA é uma plataforma integrada de gestão pedagógica para a Educação Especial, que conecta professores, escolas, planejamento individualizado e acompanhamento da aprendizagem.
+**O que aprendemos com esse uso** e levamos para o ApoIA.Edu: ⚠️ [PREENCHER com 2 ou 3 aprendizados reais, por exemplo "as professoras precisavam guardar o histórico de cada estudante", "a escola exige os próprios modelos de PEI e PAEE", "o agente não lembrava do estudante entre uma conversa e outra"].
 
-Este guia apresenta um roteiro para explorar as funcionalidades e os principais diferenciais da solução.
+O agente gera atividades soltas. O **ApoIA.Edu**, criado durante o Hack Brasil, transforma isso numa plataforma: histórico por estudante, documentos oficiais nos modelos da escola, permissões por escola e professor, e registro do que aconteceu em sala.
 
-**Tempo estimado de exploração: 15 a 20 minutos.**
-
----
-
-## 1. Acesse a demonstração — sem necessidade de cadastro
-
-**Link de acesso:** https://apoia-edu.vercel.app/
-
-1. Acesse a plataforma pelo link acima.
-2. Entre no ambiente de demonstração.
-3. Explore o painel inicial e as funcionalidades disponíveis.
-4. Conheça os cenários fictícios previamente cadastrados.
-
-O ambiente demonstrativo disponibiliza estudantes, documentos, atividades, registros pedagógicos e uma solicitação de transferência escolar.
-
-**Diferencial demonstrado:** acesso simplificado para experimentação da plataforma, sem necessidade de cadastro ou utilização de dados reais de estudantes.
+> A demo pública é **isolada e usa só dados fictícios**. Nenhum dado das escolas é usado aqui.
 
 ---
 
-## 2. Conheça o perfil pedagógico do estudante
-
-**Diferencial: personalização além do diagnóstico**
-
-1. Acesse a área de estudantes.
-2. Selecione um dos estudantes fictícios cadastrados.
-3. Explore as informações que compõem seu perfil pedagógico.
-4. Observe como a plataforma considera:
-
-- Potencialidades e habilidades;
-- Interesses pessoais;
-- Formas de comunicação;
-- Barreiras de aprendizagem;
-- Necessidades de apoio;
-- Recursos de acessibilidade;
-- Estratégias pedagógicas que funcionam.
-
-### Experimente
-
-Compare dois perfis de estudantes e observe como suas características individuais podem orientar diferentes estratégias de ensino, mesmo quando apresentam o mesmo diagnóstico.
-
-**Por que isso é importante?**
-
-Estudantes com a mesma deficiência podem apresentar necessidades, interesses e habilidades diferentes. O ApoIA considera a individualidade de cada estudante para apoiar decisões pedagógicas mais adequadas.
-
----
-
-## 3. Explore a documentação pedagógica
-
-**Diferencial: centralização e integração do planejamento**
-
-Selecione um estudante fictício e acesse seus documentos pedagógicos.
-
-### Estudo de Caso
-
-Observe a organização das informações relacionadas ao histórico, às potencialidades, às barreiras de aprendizagem e às necessidades educacionais do estudante.
-
-### PAEE — Plano de Atendimento Educacional Especializado
-
-Explore os recursos, apoios, estratégias de acessibilidade e objetivos do atendimento especializado.
-
-### PEI — Plano Educacional Individualizado
-
-Identifique os objetivos de aprendizagem, as estratégias pedagógicas e as metas individualizadas.
-
-### Plano de Aula
-
-Explore a elaboração de um planejamento que considere o conteúdo curricular e as necessidades de participação do estudante.
-
-**Por que isso é importante?**
-
-Os documentos deixam de ser arquivos isolados e passam a integrar um ambiente de planejamento pedagógico centrado no estudante.
-
----
-
-## 4. Aproveite os modelos de documentos da escola
-
-**Diferencial: aproveitamento de modelos institucionais**
-
-Sabemos que diferentes redes de ensino e instituições podem utilizar modelos próprios de documentação pedagógica.
-
-1. Acesse a funcionalidade de importação de documentos.
-2. Selecione um arquivo fictício nos formatos DOCX, XLSX ou PDF.
-3. Explore o processamento das informações pela plataforma.
-4. Observe como os dados podem ser aproveitados nos fluxos de elaboração documental.
-5. Nos formatos e fluxos compatíveis, experimente o preenchimento de modelos editáveis.
-
-### Experimente
-
-Utilize um modelo de PEI ou PAEE sem dados pessoais e verifique como suas informações podem ser aproveitadas pela plataforma.
-
-**Por que isso é importante?**
-
-A escola não precisa necessariamente abandonar seus modelos de trabalho. O ApoIA busca aproveitar os documentos existentes, reduzir a transcrição manual e facilitar a organização das informações pedagógicas.
-
----
-
-## 5. Gere uma atividade conectada ao planejamento
-
-**Diferencial: planejamento conectado à prática**
-
-Este é um dos principais diferenciais do ApoIA.
-
-1. Selecione um estudante.
-2. Consulte um objetivo de aprendizagem registrado no PEI.
-3. Consulte os apoios e recursos previstos no PAEE.
-4. Acesse a ferramenta de geração de atividades.
-5. Informe o conteúdo curricular desejado.
-6. Utilize as referências ao objetivo do PEI e aos apoios do PAEE.
-7. Solicite a geração da atividade pela inteligência artificial.
-8. Analise o resultado apresentado.
-
-### Sugestão de teste
-
-- **Componente curricular:** Ciências.
-- **Conteúdo:** animais vertebrados.
-- **Objetivo do PEI:** reconhecer e identificar animais por meio de imagens.
-- **Apoios do PAEE:** comunicação visual, instruções curtas e mediação pedagógica.
-- **Formato:** atividade impressa com apoio de imagens.
-
-### O que a banca deve observar
-
-A atividade pode ser relacionada ao planejamento individualizado do estudante, considerando tanto os objetivos de aprendizagem quanto os apoios necessários para sua participação.
-
-**Por que isso é importante?**
-
-O ApoIA conecta a documentação pedagógica à prática em sala de aula, evitando que o PEI e o PAEE sejam utilizados apenas como instrumentos burocráticos.
-
----
-
-## 6. Registre evidências da aprendizagem
-
-**Diferencial: acompanhamento pedagógico baseado em evidências**
-
-Após a geração de uma atividade, simule sua aplicação em sala de aula.
-
-1. Acesse a área de acompanhamento ou registros pedagógicos.
-2. Selecione o estudante e a atividade correspondente.
-3. Registre informações sobre sua participação.
-4. Informe o alcance do objetivo de aprendizagem.
-5. Indique o nível de apoio necessário.
-6. Registre os recursos utilizados.
-7. Defina o próximo passo pedagógico.
-
-### Sugestão de registro
-
-- **Participação:** participou da atividade proposta.
-- **Alcance do objetivo:** identificou três dos cinco animais apresentados.
-- **Nível de apoio:** mediação parcial.
-- **Recurso utilizado:** cartões com imagens.
-- **Próximo passo:** ampliar a identificação dos animais e introduzir atividades de classificação.
-
-### O que a banca deve observar
-
-O registro não se limita a uma nota ou descrição genérica. Ele permite documentar como o estudante participou, quais estratégias foram utilizadas e quais ações podem orientar o próximo planejamento.
-
-**Por que isso é importante?**
-
-O professor pode tomar decisões pedagógicas com base nas evidências observadas durante a aplicação das atividades.
-
-O planejamento torna-se um processo contínuo:
-
-**Planejar → Aplicar → Registrar → Avaliar → Replanejar.**
-
----
-
-## 7. Explore a revisão humana e o histórico de versões
-
-**Diferencial: inteligência artificial com supervisão profissional**
-
-1. Acesse um documento pedagógico.
-2. Observe seu estado de revisão.
-3. Consulte as minutas, fontes identificadas e eventuais pendências.
-4. Analise as informações geradas pela inteligência artificial.
-5. Explore os recursos de edição e revisão.
-6. Consulte o histórico de versões disponível.
-
-### O que a banca deve observar
-
-- Identificação de documentos em elaboração;
-- Pendências que necessitam de atenção;
-- Identificação das fontes utilizadas;
-- Estado de revisão;
-- Histórico de versões.
-
-**Por que isso é importante?**
-
-A inteligência artificial auxilia na elaboração dos documentos, mas a responsabilidade pela análise e validação permanece com os profissionais da educação.
-
-O ApoIA foi pensado para apoiar o professor, e não para substituí-lo.
-
----
-
-## 8. Simule a transferência de um estudante entre escolas
-
-**Diferencial: continuidade do histórico pedagógico**
-
-Este é um dos diferenciais centrais da plataforma.
-
-Imagine que um estudante da Educação Especial seja transferido para outra instituição de ensino. Em muitos casos, a nova equipe precisa reconstruir seu histórico pedagógico, realizar novas observações e elaborar novamente documentos que já existiam.
-
-O ApoIA propõe um fluxo organizado para a continuidade dessas informações.
-
-### Experimente uma transferência recebida
-
-1. Acesse o ambiente demonstrativo com perfil de Escola.
-2. Localize a área de transferências.
-3. Abra a solicitação de transferência fictícia previamente cadastrada.
-4. Observe as informações da solicitação.
-5. Conheça o funcionamento do código de transferência.
-6. Explore as opções de aprovação ou recusa.
-7. Simule a aprovação da solicitação.
-8. Verifique os documentos, atividades e registros associados à transferência.
-
-### O que pode acompanhar o estudante
-
-- Perfil pedagógico;
-- Estudo de Caso;
-- PAEE;
-- PEI;
-- Atividades pedagógicas;
-- Registros de aprendizagem;
-- Histórico de acompanhamento.
-
-### O que a banca deve observar
-
-A transferência não envolve apenas o cadastro do estudante, mas também a possibilidade de continuidade de seu histórico pedagógico, mediante autorização e controle de acesso.
-
-**Por que isso é importante?**
-
-O estudante muda de escola, mas sua trajetória de aprendizagem não precisa começar do zero.
-
-A proposta reduz o retrabalho das equipes escolares e favorece a continuidade das estratégias pedagógicas que já demonstraram resultados.
-
----
-
-## 9. Explore a colaboração entre Escola e Professor
-
-**Diferencial: colaboração com controle de permissões**
-
-A plataforma foi pensada para atender diferentes profissionais envolvidos na Educação Especial, respeitando suas responsabilidades e permissões.
-
-### Perfil Escola
-
-Explore as funcionalidades relacionadas a:
-
-- Gestão dos estudantes;
-- Organização da documentação;
-- Vínculos entre professores e estudantes;
-- Solicitações de transferência;
-- Gerenciamento e revogação de acessos.
-
-### Perfil Professor
-
-Explore as funcionalidades relacionadas a:
-
-- Acesso aos estudantes vinculados;
-- Elaboração de atividades acessíveis;
-- Consulta e elaboração de documentos pedagógicos;
-- Registros de aprendizagem;
-- Planejamento e acompanhamento pedagógico.
-
-### Experimente
-
-Alterne entre os perfis demonstrativos de Escola e Professor e observe as diferenças de acesso e responsabilidades.
-
-Explore também os recursos de vínculo com estudantes e revogação de acesso.
-
-**Por que isso é importante?**
-
-A inclusão escolar é um trabalho coletivo. O ApoIA organiza a colaboração entre os profissionais, considerando a necessidade de proteger as informações dos estudantes.
-
----
-
-## 10. Conheça o ecossistema integrado ApoIA
-
-Ao finalizar a demonstração, observe como as funcionalidades se relacionam ao longo da trajetória pedagógica:
-
-1. Conhecer o estudante e suas necessidades individuais.
-2. Elaborar ou aproveitar a documentação existente.
-3. Definir objetivos e estratégias pedagógicas.
-4. Gerar atividades conectadas ao planejamento.
-5. Registrar evidências da aprendizagem.
-6. Revisar e aperfeiçoar as estratégias utilizadas.
-7. Compartilhar responsabilidades entre profissionais autorizados.
-8. Promover a continuidade das informações entre instituições.
-
-O diferencial do ApoIA está na integração dessas etapas em uma única plataforma.
-
-Não se trata apenas de gerar atividades ou documentos com inteligência artificial, mas de conectar o planejamento à prática pedagógica e acompanhar a trajetória de aprendizagem do estudante.
-
----
-
-## Considerações sobre a versão demonstrativa
-
-Esta versão foi disponibilizada para avaliação do projeto no Hack Brasil.
-
-- Utilize exclusivamente dados fictícios.
-- Os registros realizados na demonstração podem ser temporários.
-- Algumas funcionalidades podem depender da configuração e disponibilidade dos serviços de inteligência artificial.
-- A persistência institucional dos dados deve contar com infraestrutura adequada de armazenamento, segurança e controle de acesso.
-- Os conteúdos produzidos pela IA devem ser revisados e validados pelos profissionais da educação.
-
----
-
-## Nosso propósito
-
-Reduzir o trabalho burocrático dos professores, fortalecer o planejamento pedagógico individualizado e promover a continuidade da aprendizagem dos estudantes da Educação Especial.
-
-**O estudante pode mudar de turma, de professor ou de escola. Sua história de aprendizagem não precisa recomeçar.**
-
-**ApoIA.Edu — Tecnologia a serviço de uma educação verdadeiramente inclusiva.**
-
-
-**Demonstração:** https://apoia-edu.vercel.app/
-
-
-## Tecnologias e organização
-
-React 19, TypeScript, Vite, Tailwind CSS, Node.js, Express, SQLite (`better-sqlite3`), integração Google Gemini, DOCX, ExcelJS e bibliotecas de extração de documentos.
+## Arquitetura
+
+```mermaid
+flowchart LR
+  U[Professor / Escola<br/>navegador] --> FE[React 19 + Vite<br/>SPA]
+  FE -->|/api| API[Express<br/>rotas + permissões]
+  API --> DB[(SQLite<br/>better-sqlite3)]
+  API --> DOC[docEngine<br/>DOCX · XLSX · PDF]
+  API --> AI[aiEngine]
+  AI -->|perfil anônimo| G[Google Gemini<br/>texto + ilustrações]
+```
+
+- **Frontend:** React 19, TypeScript, Vite, Tailwind CSS. Exportação A4 em JPEG via canvas (`src/utils/a4CanvasExport.ts`).
+- **Backend:** Node.js 24 + Express. Autenticação por sessão em cookie `httpOnly`, senhas com `scrypt` e comparação em tempo constante.
+- **Banco:** SQLite com tabelas de escolas (`workspaces`), vínculos professor–estudante, documentos, atividades, registros de aplicação, transferências e log de auditoria administrativa.
+- **Documentos:** `docx`, `exceljs`, `mammoth`, `unpdf` e manipulação direta do XML do DOCX para preencher os modelos da escola mantendo tabelas e mesclagens.
+- **IA:** `@google/genai`, chamado **somente no servidor**, com modelo principal e modelo reserva configuráveis, novas tentativas em erros temporários e geração de ilustrações didáticas sem texto.
+
+### Decisões de projeto
+
+- **A chave da IA nunca vai para o navegador.** Toda chamada ao Gemini passa pelo servidor.
+- **A IA recebe um resumo anônimo do perfil** (`buildAnonymizedStudentBrief`): código ou iniciais do estudante, ano/série, potencialidades, interesses, barreiras e estratégias. Nunca o nome completo. ⚠️ [CONFIRMAR e citar onde fica no código: "o envio de dados reais à IA vem desligado por padrão até a escola autorizar".]
+- **Permissões checadas no servidor** em cada rota e no download de anexos. Ao encerrar um vínculo, o acesso é bloqueado na hora.
+- **Demo pública isolada:** na Vercel (`api/index.ts`), só as rotas `/api/demo/*` ficam abertas. Contas reais ficam bloqueadas e a geração por IA tem limite por visitante e por hora.
+- **SQLite:** simples para o protótipo. Na Vercel o banco fica em `/tmp` e é **temporário**, o que é intencional para a demo. ⚠️ [PREENCHER: onde roda a versão das escolas e como é feito o backup, ou "em produção, a migração prevista é para PostgreSQL gerenciado".]
+
+## Como executar localmente
+
+**Pré-requisitos:** Node.js 24.x e npm. O `better-sqlite3` compila um módulo nativo; no Linux pode exigir `build-essential` e Python 3.
+
+```bash
+git clone https://github.com/ElizabethCOliveira/apoia-edu.git
+cd apoia-edu
+npm install
+cp .env.example .env      # e preencha GEMINI_API_KEY
+npm run dev               # http://localhost:3000
+```
+
+| Variável | Obrigatória | Para que serve |
+| --- | --- | --- |
+| `GEMINI_API_KEY` | Para usar a IA | Chave da API Gemini ([Google AI Studio](https://aistudio.google.com/)). Sem ela, a demo funciona com os exemplos prontos. |
+| `GEMINI_MODEL` / `GEMINI_FALLBACK_MODEL` | Não | Troca o modelo principal e o reserva sem mexer no código |
+| `APP_URL` | Não | URL pública usada nos links de convite e de recuperação de senha |
+| `STORAGE_ROOT` | Não | Pasta do banco e dos anexos (padrão: `./storage`) |
+| `LUMINEXT_ADMIN_EMAIL` / `_PASSWORD` / `_NAME` | Não | Cria o primeiro administrador. Também pode usar `npm run admin:init` |
+
+Outros comandos:
+
+```bash
+npm run lint     # checagem de tipos (tsc --noEmit)
+npm run build    # build do frontend em dist/
+npm start        # servidor em modo produção
+```
+
+> A pasta `storage/` guarda o banco e os anexos e **nunca é servida publicamente**: todo arquivo passa por rotas autorizadas da API.
+
+## Estrutura do código
 
 | Caminho | Responsabilidade |
 | --- | --- |
-| `src/App.tsx` e `src/components/` | Interface e fluxos pedagógicos |
-| `server/routes.ts` | API do protótipo |
-| `server/aiEngine.ts` | Geração de conteúdos e integração com IA |
-| `server/docEngine.ts` | Extração, modelos e exportação |
-| `server/auth.ts` e `server/db.ts` | Autenticação, permissões e banco |
-| `server/demo.ts` | Cenários fictícios e sessões de demonstração |
-| `server.ts` | Servidor local completo |
-| `api/index.ts` | Entrada restrita à demonstração para a Vercel |
+| `src/App.tsx`, `src/components/` | Interface e fluxos pedagógicos |
+| `server/routes.ts` | API: estudantes, documentos, atividades, escolas, transferências, demo |
+| `server/aiEngine.ts` | Prompts, chamadas ao Gemini, modelo reserva e ilustrações |
+| `server/docEngine.ts` | Extração e preenchimento de DOCX/XLSX/PDF e exportação |
+| `server/auth.ts`, `server/db.ts` | Sessões, senhas, permissões e esquema do banco |
+| `server/demo.ts` | Cenários fictícios e sessões isoladas da demonstração |
+| `server.ts` | Servidor completo (local / produção) |
+| `api/index.ts` | Entrada da Vercel, restrita à demonstração |
 
-## Estágio e limites
+## Histórico de desenvolvimento
 
-Protótipo funcional em validação. Foram implementados os fluxos descritos acima, mas sua existência no código não constitui validação pedagógica, certificação de segurança ou garantia de conformidade legal. A versão publicada usa exemplos fictícios; o uso real exige validação pela equipe e infraestrutura apropriada.
+- **⚠️ [mês/ano]:** Elizabeth cria o APOIA como agente no Microsoft Copilot (sem código próprio: configuração por instruções). O agente passa a ser usado em escolas.
+- **09/11/2026:** documentação do agente publicada em [ElizabethCOliveira/ApoIA](https://github.com/ElizabethCOliveira/ApoIA).
+- **23/11/2026:** durante o Hack Brasil, o time começa o **ApoIA.Edu**, uma plataforma nova escrita do zero com apoio de ferramentas de IA para geração de código (⚠️ [CONFIRMAR: Google AI Studio]), e publica o código neste repositório no mesmo dia.
+- **24–30/11/2026:** melhorias do time (testes, CI, documentação e ajustes), registradas nos commits.
 
-**Impacto esperado:** reduzir tarefas repetitivas, facilitar materiais acessíveis e manter a continuidade do planejamento e acompanhamento. Não foram atribuídos percentuais de economia ou resultados de aprendizagem ainda não medidos nesta plataforma.
+Nenhum código anterior ao evento foi copiado para este repositório. O agente do Copilot não tem código-fonte: ele é configurado na própria plataforma da Microsoft.
 
-**Autoria:** Elizabeth da Conceição Oliveira, Nycollas Reydan Alves Peixoto, Jessica Lima de Carvalho Pastor
+## Próximos passos
+
+- Testes automatizados de permissões e de preenchimento de modelos, com CI no GitHub Actions.
+- Rascunho da revisão bimestral do PEI a partir dos registros de aplicação.
+- Banco gerenciado com backup para escalar para redes municipais.
+- Auditoria de acessibilidade do próprio app (WCAG).
+
+## Limites e responsabilidade
+
+Protótipo funcional em validação. Os conteúdos gerados pela IA são **sugestões** e precisam ser revisados por profissionais da educação. O ApoIA **não faz diagnóstico** e não substitui a avaliação de profissionais. A preservação de formatação depende do modelo importado; não se promete compatibilidade com qualquer documento. Não divulgamos percentuais de economia de tempo ou resultados de aprendizagem que ainda não foram medidos.
+
+## Time
+
+Elizabeth da Conceição Oliveira · Nycollas Reydan Alves Peixoto · Jéssica Lima de Carvalho Pastor
+
+## Licença
+
+⚠️ [PREENCHER: recomendado incluir um arquivo `LICENSE`, por exemplo MIT. Sem licença, o júri ainda pode ler e testar o código, mas a escolha deixa claro como ele pode ser usado.]
