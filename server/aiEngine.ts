@@ -1,4 +1,5 @@
 import { GoogleGenAI, ThinkingLevel, Type } from '@google/genai';
+import { stripAnswerHintsFromCards } from './activitySafety.ts';
 import type {
   AccessibilityMode,
   ActivityContent,
@@ -948,7 +949,7 @@ Regras pedagógicas inegociáveis:
 4. Se literacyStage for "alfabetizacao_inicial" (estudante não alfabetizado): escreva TODOS os textos voltados à folha do estudante (title, título dos exercícios, instruction, items e legendas visuais) integralmente em CAIXA ALTA (LETRAS MAIÚSCULAS), com até 2 exercícios curtos de pareamento, seleção, identificação ou associação.
 5. Se literacyStage for "alfabetizado": elabore de 2 a 4 exercícios concretos, completos e prontos para impressão em A4 (sem respostas genéricas ou placeholders vazios).
 6. Para cada exercício, gere um apoio visual rico e específico do tema! Escolha visualAidType entre: "cartao_associacao", "sequencia_visual", "ciclo_natureza", "tabela_classificacao", "linha_numerica", "mapa_conceitual", "figura_geometrica", "sistema_solar" ou "nenhum" (inclua apoio visual real em pelo menos 2 exercícios!).
-7. Sempre que visualAidType for diferente de "nenhum", preencha visualAidCards com 2 a 4 cartões concretos do tema contendo { label, sublabel, icon }, escolhendo icon entre: "sol", "chuva", "agua", "planta", "arvore", "escola", "casa", "cidade", "saude", "terra", "saturno", "peixe", "borboleta", "passaro", "animal", "livro", "lapis", "relogio", "coracao", "musica", "bola", "fruta", "numeros", "formas", "mapa", "lupa", "mao", "estrela", E preencha visualAidImagePrompt em inglês descrevendo uma cena escolar limpa e concreta de alto contraste em fundo branco puro (sem texto dentro da imagem) para gerar a ilustração em alta qualidade.
+7. Sempre que visualAidType for diferente de "nenhum", preencha visualAidCards com 2 a 4 cartões concretos do tema contendo { label, sublabel, icon } (os cartões aparecem na folha do estudante: NUNCA coloque neles a resposta, quantidades, números correspondentes ou resultados; a resposta vai somente em answerKey), escolhendo icon entre: "sol", "chuva", "agua", "planta", "arvore", "escola", "casa", "cidade", "saude", "terra", "saturno", "peixe", "borboleta", "passaro", "animal", "livro", "lapis", "relogio", "coracao", "musica", "bola", "fruta", "numeros", "formas", "mapa", "lupa", "mao", "estrela", E preencha visualAidImagePrompt em inglês descrevendo uma cena escolar limpa e concreta de alto contraste em fundo branco puro (sem texto dentro da imagem) para gerar a ilustração em alta qualidade.
 8. Seja objetivo e conciso: cada enunciado deve ter de 1 a 2 frases curtas; cada item de lista deve ter no máximo 140 caracteres; nunca repita frases ou palavras.`;
 
     const prompt = `Crie ${kind === 'atividade' ? 'uma atividade adaptada pronta para impressão A4 com apoios visuais ilustrados específicos do tema' : 'um plano de aula inclusivo estruturado em DUA'} em português do Brasil.
@@ -1080,7 +1081,7 @@ Regras adicionais:
           : i <= 1
           ? ('cartao_associacao' as const)
           : ('nenhum' as const);
-        const cards = Array.isArray(ex.visualAidCards)
+        const rawCards = Array.isArray(ex.visualAidCards)
           ? ex.visualAidCards
               .filter((c: any) => c && c.label)
               .slice(0, 4)
@@ -1090,6 +1091,9 @@ Regras adicionais:
                 icon: c.icon ? String(c.icon) : undefined,
               }))
           : undefined;
+        // A ilustração usa os rótulos completos (ex.: "3 MACACOS" para desenhar 3 macacos);
+        // a folha do estudante mostra só os cartões sem a resposta.
+        const cards = stripAnswerHintsFromCards(rawCards);
         return {
           number: i + 1,
           title: upperIfInitial(ex.title || `Atividade ${i + 1}`),
@@ -1107,7 +1111,7 @@ Regras adicionais:
                 : String(
                     ex.visualAidImagePrompt ||
                       `Educational illustration for ${subject} about ${theme}: ${ex.title || ''}${
-                        cards && cards.length > 0 ? ` showing ${cards.map((c: any) => c.label).join(', ')}` : ''
+                        rawCards && rawCards.length > 0 ? ` showing ${rawCards.map((c: any) => c.label).join(', ')}` : ''
                       }`
                   ),
           },

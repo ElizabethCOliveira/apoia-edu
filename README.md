@@ -138,6 +138,7 @@ Os testes rodam num banco SQLite temporário (nunca tocam em `storage/`) e cobre
 | --- | --- |
 | `tests/permissions.test.ts` | Professora só acessa estudante com vínculo ativo; vínculo revogado ou saída da escola bloqueiam na hora; área individual é privada; IA externa nasce desligada |
 | `tests/public-demo.test.ts` | A demo pública bloqueia rotas reais (login, cadastro, admin, estudantes); cada visitante tem sessão isolada; a IA tem proteções de chave ausente e tamanho de entrada |
+| `tests/activity-safety.test.ts` | Os cartões da folha do estudante nunca mostram a resposta (quantidades, número correspondente, total) |
 | `tests/auth.test.ts` | Senhas com `scrypt` e salt único; contas pendentes, bloqueadas ou com contrato vencido não entram |
 
 O GitHub Actions roda checagem de tipos e testes a cada push (veja `.github/workflows/ci.yml`).
