@@ -33,6 +33,8 @@ A preservação de formatação depende do modelo importado; não se promete com
 
 ## Demonstração para a banca
 
+Acesse: https://apoia-edu-bethfurg-5735.vercel.app
+
 Na publicação Vercel, clique em **Experimentar demonstração** e selecione **Perfil Escola** ou **Perfil Professor(a)**. Não são necessárias credenciais.
 
 **A publicação é exclusiva para avaliação, com dados fictícios e temporários.** Contas reais, rotas administrativas e chamadas externas de IA estão desativadas. As alterações ficam na memória da instância do servidor e podem ser reiniciadas quando ela reinicia, muda de instância, expira a sessão ou atinge seu limite. Não há promessa de persistência ou de sincronização entre instâncias nesta versão.
@@ -65,7 +67,7 @@ Os controles podem estar distribuídos entre as abas do estudante e a gestão da
 ### Pré-requisitos
 
 - **Node.js 24.x** e npm.
-- Git, para clonar o repositório. Por ser privado, é necessário acesso autorizado.
+- Git, para clonar este repositório público.
 - Para a versão local completa: diretório gravável para SQLite, uploads e documentos gerados.
 - Chave Gemini apenas se desejar testar chamadas externas de IA. Nunca coloque a chave no frontend ou no GitHub.
 
