@@ -33,6 +33,8 @@ A preservação de formatação depende do modelo importado; não se promete com
 
 ## Demonstração para a banca
 
+Nossa solução foi desenvolvida para centralizar a criação de atividades acessíveis, a elaboração de documentos pedagógicos e o acompanhamento dos estudantes da Educação Especial, utilizando inteligência artificial como ferramenta de apoio ao professor.
+
 Acesse: https://apoia-edu.vercel.app
 
 Na publicação Vercel, clique em **Experimentar demonstração** e selecione **Perfil Escola** ou **Perfil Professor(a)**. Não são necessárias credenciais.
