@@ -50,19 +50,38 @@ Um fluxo único, centrado no estudante:
 | Revisão humana obrigatória | Minutas com fontes identificadas, pendências e versões | A equipe valida tudo o que a IA sugere |
 | Colaboração com permissões | Perfis Escola e Professor, vínculos e revogação imediata de acesso | Cada profissional vê só o que deve |
 
-## 🏫 De onde viemos: a demanda já é validada
+## 🏫 De onde viemos: 64 escolas, ~900 professores
 
-O ApoIA.Edu não começou do zero. A primeira versão do APOIA é um **agente de IA configurado no Microsoft Copilot** ([documentação](https://github.com/ElizabethCOliveira/ApoIA)), que já é usado por professoras para adaptar atividades.
+O ApoIA.Edu nasce de uma experiência real na rede pública. No **Projeto Plural – Acessibilidade Curricular**, desenvolvido por Elizabeth Oliveira no Centro de Inovação da Educação Básica Paulista (CIEBP) de Itapecerica da Serra, agentes de IA criados no **Microsoft 365 Copilot** ([documentação](https://github.com/ElizabethCOliveira/ApoIA)) foram implantados para apoiar a criação de atividades acessíveis, PEI, planos de aula e guias de aprendizagem.
 
-⚠️ [PREENCHER com dados reais e autorizados. Apenas números agregados, nenhum dado de estudante.]
+| Alcance | |
+| --- | --- |
+| Escolas públicas da rede estadual de SP | **64** |
+| Municípios | **4** (Itapecerica da Serra, Juquitiba, Embu-Guaçu e São Lourenço da Serra) |
+| Professores alcançados | **~900** |
 
-- Agente em uso desde ⚠️ [mês/ano] em ⚠️ [N] escolas de ⚠️ [cidade/UF].
-- ⚠️ [N] professoras usando · ⚠️ [N] atividades adaptadas geradas.
-- Depoimento: "⚠️ [frase da professora]" — ⚠️ [nome, função, escola, com autorização].
+**Avaliação da formação e da implantação** (634 respostas):
 
-**O que aprendemos com esse uso** e levamos para o ApoIA.Edu: ⚠️ [PREENCHER com 2 ou 3 aprendizados reais, por exemplo "as professoras precisavam guardar o histórico de cada estudante", "a escola exige os próprios modelos de PEI e PAEE", "o agente não lembrava do estudante entre uma conversa e outra"].
+- ~97% avaliaram a formação como excelente ou muito boa
+- 92,3% consideraram as explicações totalmente claras
+- 89,3% reconheceram alta utilidade das ferramentas
+- 87,9% manifestaram intenção de usar os agentes em breve
 
-O agente gera atividades soltas. O **ApoIA.Edu**, criado durante o Hack Brasil, transforma isso numa plataforma: histórico por estudante, documentos oficiais nos modelos da escola, permissões por escola e professor, e registro do que aconteceu em sala.
+A pesquisa de acompanhamento após um bimestre de uso começou em novembro de 2026 e fica aberta até dezembro. Os retornos até agora são positivos, principalmente sobre acessibilidade curricular e planejamento docente.
+
+> Esses números medem a formação e a percepção dos professores sobre os agentes do Copilot. Ainda não medem o ApoIA.Edu nem resultados de aprendizagem dos estudantes.
+
+### O que essa experiência mostrou
+
+Os agentes ajudam a criar materiais acessíveis, mas os professores precisam de algo mais completo e integrado:
+
+- **Centralizar** atividades acessíveis, PEI, PAEE, Estudos de Caso e relatórios de avaliação num só lugar.
+- **Reduzir o tempo** gasto com planejamento e documentos.
+- **Acompanhar** o desenvolvimento e a aprendizagem de cada estudante.
+- **Preservar o histórico pedagógico**, com transferência autorizada quando o estudante muda de escola.
+- **Democratizar o acesso à IA**, sem depender da rede de ensino ter o Microsoft 365 Copilot.
+
+O **ApoIA.Edu**, criado durante o Hack Brasil, é essa solução: transforma uma experiência regional numa plataforma com potencial nacional, para escolas públicas e privadas de todo o Brasil.
 
 > A demo pública é **isolada e usa só dados fictícios**. Nenhum dado das escolas é usado aqui.
 
@@ -93,7 +112,7 @@ flowchart LR
 - **IA externa desligada por padrão para dados reais:** cada escola tem o campo `ai_external_enabled`, que nasce `0`. A geração com IA só acontece depois que a escola autoriza. Isso é coberto por teste em `tests/permissions.test.ts`.
 - **Permissões checadas no servidor** em cada rota e no download de anexos. Ao encerrar um vínculo, o acesso é bloqueado na hora.
 - **Demo pública isolada:** na Vercel (`api/index.ts`), só as rotas `/api/demo/*` ficam abertas. Contas reais ficam bloqueadas e a geração por IA tem limite por visitante e por hora.
-- **SQLite:** simples para o protótipo. Na Vercel o banco fica em `/tmp` e é **temporário**, o que é intencional para a demo. ⚠️ [PREENCHER: onde roda a versão das escolas e como é feito o backup, ou "em produção, a migração prevista é para PostgreSQL gerenciado".]
+- **SQLite:** simples para o protótipo. Na Vercel o banco fica em `/tmp` e é **temporário**, o que é intencional para a demo. Para uso real pelas escolas, o plano é migrar para um PostgreSQL gerenciado, com backup automático e criptografia.
 
 ## Como executar localmente
 
@@ -158,7 +177,8 @@ O GitHub Actions roda checagem de tipos e testes a cada push (veja `.github/work
 
 ## Histórico de desenvolvimento
 
-- **⚠️ [mês/ano]:** Elizabeth cria o APOIA como agente no Microsoft Copilot (sem código próprio: configuração por instruções). O agente passa a ser usado em escolas.
+- **⚠️ [mês]/2026:** no Projeto Plural (CIEBP Itapecerica da Serra), Elizabeth cria os agentes APOIA no Microsoft 365 Copilot, sem código próprio (configuração por instruções). Eles são implantados em 64 escolas estaduais de 4 municípios, alcançando ~900 professores.
+- **Novembro/2026:** começa a pesquisa de acompanhamento após um bimestre de uso.
 - **09/11/2026:** documentação do agente publicada em [ElizabethCOliveira/ApoIA](https://github.com/ElizabethCOliveira/ApoIA).
 - **23/11/2026:** durante o Hack Brasil, o time começa o **ApoIA.Edu**, uma plataforma nova escrita do zero com apoio de ferramentas de IA para geração de código (⚠️ [CONFIRMAR: Google AI Studio]), e publica o código neste repositório no mesmo dia.
 - **24–30/11/2026:** melhorias do time (testes, CI, documentação e ajustes), registradas nos commits.
