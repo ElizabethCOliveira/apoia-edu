@@ -1,5 +1,5 @@
 import { GoogleGenAI, ThinkingLevel, Type } from '@google/genai';
-import { stripAnswerHintsFromCards } from './activitySafety.ts';
+import { alignImagePromptWithItems, stripAnswerHintsFromCards, unpairMatchingItems } from './activitySafety.ts';
 import type {
   AccessibilityMode,
   ActivityContent,
@@ -124,7 +124,7 @@ async function generateEducationalIllustration(
 ): Promise<string> {
   const audienceStyle =
     literacyStage === 'alfabetizacao_inicial'
-      ? 'very simple, bold, clear, concrete educational picture-card illustration with only 1 to 3 large well-separated objects for early literacy and intellectual disability accessibility'
+      ? 'very simple, bold, clear, concrete educational picture-card illustration with only the objects the exercise needs, large and well-separated, for early literacy and intellectual disability accessibility (for counting exercises, draw exactly the requested quantities as separate groups)'
       : 'clean, crisp, high-contrast Brazilian school textbook educational illustration, dignified and age-appropriate';
 
   const fullPrompt = [
@@ -950,7 +950,9 @@ Regras pedagógicas inegociáveis:
 5. Se literacyStage for "alfabetizado": elabore de 2 a 4 exercícios concretos, completos e prontos para impressão em A4 (sem respostas genéricas ou placeholders vazios).
 6. Para cada exercício, gere um apoio visual rico e específico do tema! Escolha visualAidType entre: "cartao_associacao", "sequencia_visual", "ciclo_natureza", "tabela_classificacao", "linha_numerica", "mapa_conceitual", "figura_geometrica", "sistema_solar" ou "nenhum" (inclua apoio visual real em pelo menos 2 exercícios!).
 7. Sempre que visualAidType for diferente de "nenhum", preencha visualAidCards com 2 a 4 cartões concretos do tema contendo { label, sublabel, icon } (os cartões aparecem na folha do estudante: NUNCA coloque neles a resposta, quantidades, números correspondentes ou resultados; a resposta vai somente em answerKey), escolhendo icon entre: "sol", "chuva", "agua", "planta", "arvore", "escola", "casa", "cidade", "saude", "terra", "saturno", "peixe", "borboleta", "passaro", "animal", "livro", "lapis", "relogio", "coracao", "musica", "bola", "fruta", "numeros", "formas", "mapa", "lupa", "mao", "estrela", E preencha visualAidImagePrompt em inglês descrevendo uma cena escolar limpa e concreta de alto contraste em fundo branco puro (sem texto dentro da imagem) para gerar a ilustração em alta qualidade.
-8. Seja objetivo e conciso: cada enunciado deve ter de 1 a 2 frases curtas; cada item de lista deve ter no máximo 140 caracteres; nunca repita frases ou palavras.`;
+8. Seja objetivo e conciso: cada enunciado deve ter de 1 a 2 frases curtas; cada item de lista deve ter no máximo 140 caracteres; nunca repita frases ou palavras.
+9. Os items aparecem na folha do estudante: NUNCA escreva um item já ligado à sua resposta (ex.: "MACACO → 2 BANANAS"). Em exercícios de ligar ou parear, cada item traz só o elemento com espaço para responder, e as opções ficam num item separado, em ordem diferente da resposta. A resposta vai somente em answerKey.
+10. A ilustração (visualAidImagePrompt) deve mostrar exatamente os mesmos elementos e quantidades citados nos items do exercício, nada a mais e nada a menos. Se o tema pede contagem até N, use quantidades de 1 até N.`;
 
     const prompt = `Crie ${kind === 'atividade' ? 'uma atividade adaptada pronta para impressão A4 com apoios visuais ilustrados específicos do tema' : 'um plano de aula inclusivo estruturado em DUA'} em português do Brasil.
 Estudante (perfil anônimo):
@@ -1081,6 +1083,7 @@ Regras adicionais:
           : i <= 1
           ? ('cartao_associacao' as const)
           : ('nenhum' as const);
+        const rawItems: string[] = Array.isArray(ex.items) ? ex.items.map((it: any) => upperIfInitial(String(it))) : [];
         const rawCards = Array.isArray(ex.visualAidCards)
           ? ex.visualAidCards
               .filter((c: any) => c && c.label)
@@ -1099,7 +1102,7 @@ Regras adicionais:
           title: upperIfInitial(ex.title || `Atividade ${i + 1}`),
           instruction: upperIfInitial(ex.instruction || ''),
           interactionType: (ex.interactionType as any) || (literacyStage === 'alfabetizado' ? 'resposta_curta' : 'pareamento'),
-          items: Array.isArray(ex.items) ? ex.items.map((it: any) => upperIfInitial(String(it))) : [],
+          items: unpairMatchingItems(rawItems),
           visualAidSpec: {
             type: chosenVisual,
             caption: chosenVisual === 'nenhum' ? '' : upperIfInitial(String(ex.visualAidCaption || `Apoio visual ilustrado: ${theme}`)),
@@ -1108,12 +1111,12 @@ Regras adicionais:
             imagePrompt:
               chosenVisual === 'nenhum'
                 ? undefined
-                : String(
+                : alignImagePromptWithItems(String(
                     ex.visualAidImagePrompt ||
                       `Educational illustration for ${subject} about ${theme}: ${ex.title || ''}${
                         rawCards && rawCards.length > 0 ? ` showing ${rawCards.map((c: any) => c.label).join(', ')}` : ''
                       }`
-                  ),
+                  ), rawItems),
           },
           responseLines: Math.min(Math.max(Number(ex.responseLines || (literacyStage === 'alfabetizado' ? 2 : 1)), 1), 4),
           answerKey: ex.answerKey || 'Validar conforme resposta esperada em sala.',
