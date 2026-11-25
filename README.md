@@ -5,7 +5,7 @@
 O ApoIA.Edu ajuda professores e escolas a elaborar o Estudo de Caso, o PAEE e o PEI, gerar atividades acessíveis em A4 e registrar o que aconteceu em sala, tudo ligado ao perfil de cada estudante. A IA sugere; o educador revisa e decide.
 
 🔗 **Demo:** https://apoia-edu.vercel.app/ (sem cadastro, só dados fictícios)
-🎬 **Vídeo:** ⚠️ [PREENCHER: link do YouTube]
+🎬 **Vídeo do pitch:** https://youtu.be/E_XTv19NHMk (legendado)
 🏁 **Hack Brasil 2026:** trilha *Acesso à educação* · time LumiNextTech
 
 ---
@@ -177,10 +177,10 @@ O GitHub Actions roda checagem de tipos e testes a cada push (veja `.github/work
 
 ## Histórico de desenvolvimento
 
-- **⚠️ [mês]/2026:** no Projeto Plural (CIEBP Itapecerica da Serra), Elizabeth cria os agentes APOIA no Microsoft 365 Copilot, sem código próprio (configuração por instruções). Eles são implantados em 64 escolas estaduais de 4 municípios, alcançando ~900 professores.
+- **2026:** no Projeto Plural (CIEBP Itapecerica da Serra), Elizabeth cria os agentes APOIA no Microsoft 365 Copilot, sem código próprio (configuração por instruções). Eles são implantados em 64 escolas estaduais de 4 municípios, alcançando ~900 professores.
 - **Novembro/2026:** começa a pesquisa de acompanhamento após um bimestre de uso.
 - **09/11/2026:** documentação do agente publicada em [ElizabethCOliveira/ApoIA](https://github.com/ElizabethCOliveira/ApoIA).
-- **23/11/2026:** durante o Hack Brasil, o time começa o **ApoIA.Edu**, uma plataforma nova escrita do zero com apoio de ferramentas de IA para geração de código (⚠️ [CONFIRMAR: Google AI Studio]), e publica o código neste repositório no mesmo dia.
+- **23/11/2026:** durante o Hack Brasil, o time começa o **ApoIA.Edu**, uma plataforma nova escrita do zero com apoio de ferramentas de IA para geração de código, e publica o código neste repositório no mesmo dia.
 - **24–30/11/2026:** melhorias do time (testes, CI, documentação e ajustes), registradas nos commits.
 
 Nenhum código anterior ao evento foi copiado para este repositório. O agente do Copilot não tem código-fonte: ele é configurado na própria plataforma da Microsoft.
@@ -202,4 +202,4 @@ Elizabeth da Conceição Oliveira · Nycollas Reydan Alves Peixoto · Jéssica L
 
 ## Licença
 
-⚠️ [PREENCHER: recomendado incluir um arquivo `LICENSE`, por exemplo MIT. Sem licença, o júri ainda pode ler e testar o código, mas a escolha deixa claro como ele pode ser usado.]
+O código está público para que o júri e qualquer pessoa possam ler, executar e testar o projeto. A licença de reutilização será definida pelo time.
