@@ -18,6 +18,7 @@ import type {
 } from '../types';
 import { exportActivityToA4Jpegs } from '../utils/a4CanvasExport';
 import { ActivityVisualAid } from './ActivityVisualAid';
+import { GenerationProgress } from './GenerationProgress';
 
 interface ActivitiesTabProps {
   student: Student;
@@ -417,6 +418,7 @@ export const ActivitiesTab: React.FC<ActivitiesTabProps> = ({
               : 'Gerar atividade / plano de aula'}
           </button>
         </div>
+        {busy && useAi && <GenerationProgress withImages={kind === 'atividade' && generateImages} />}
       </form>
 
       {/* Activity List + Preview */}
